@@ -3,5 +3,16 @@
 {% block content %}
     <h1>Welcome to your Dashboard</h1>
     <p>Hello, {{ current_user.username }}!</p>
+    
+    <h2>Your Groups</h2>
+    <ul>
+        {% for group in current_user.groups %}
+            <li>{{ group.name }}</li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ url_for('groups.create_group') }}" class="btn btn-primary">Create New Group</a>
+    <a href="{{ url_for('expenses.create_expense') }}" class="btn btn-secondary">Add New Expense</a>
+    
     <a href="{{ url_for('auth.logout') }}">Logout</a>
 {% endblock %}
